@@ -18,7 +18,7 @@ END IF
 
 
 SUB Display (cheer AS STRING)
-  PRINT cheer
+  PRINT cheer + CHR$(10)
 END SUB
 
 FUNCTION MascotSignFor$ (cheer AS STRING)
