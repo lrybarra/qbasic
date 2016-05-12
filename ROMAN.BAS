@@ -37,19 +37,11 @@ FUNCTION ConvertToRomanOld$ (MyNum AS INTEGER, RomanChars() AS STRING, Milestone
 
   WHILE Num1% > 0
 
-   FOR i = 0 TO 5
+   FOR i = 0 TO 6
      IF Num1% >= Milestones(i) THEN
        CALL RomanCalculationsOld(Num1%, Temp%, RomanChars(i), Milestones(i), TempStr$)
      END IF
    NEXT i
-   
-   IF Num1% < 5 THEN
-     Temp% = Num1%
-     Num1% = 0
-     FOR x = 1 TO Temp%
-       TempStr$ = TempStr$ + "I"
-     NEXT x
-   END IF
 
   WEND
 
