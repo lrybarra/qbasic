@@ -1,13 +1,18 @@
-DECLARE SUB RomanCalculations (Num1%, Temp%, RomanChar$, MilestoneNum!, TempStr$)
+DECLARE SUB SetArrays (RomanChars() AS STRING, Milestones() AS INTEGER)
+DECLARE SUB RomanCalculationsOld (Num1%, Temp%, RomanChar$, MilestoneNum AS INTEGER, TempStr$)
 '***** COPYRIGHT 2016 LUIS YBARRA *****
 
 DIM MyNum AS INTEGER
+DIM RomanChars(7) AS STRING
+DIM Milestones(7) AS INTEGER
 
 DECLARE FUNCTION GetMyNumber% ()
-DECLARE FUNCTION ConvertToRomanOld$ (MyNum AS INTEGER)
+DECLARE FUNCTION ConvertToRomanOld$ (MyNum AS INTEGER, RomanChars() AS STRING, Milestones() AS INTEGER)
 
 CLS
 COLOR 10
+
+CALL SetArrays(RomanChars(), Milestones())
 
 DO
   INPUT "ENTER 1 FOR OLD ROMAN & 2 FOR NEW ROMAN :> ", Choice%
@@ -15,7 +20,7 @@ DO
   MyNum = GetMyNumber%
 
   IF Choice% = 1 THEN
-    RomanNumeral$ = ConvertToRomanOld$(MyNum)
+    RomanNumeral$ = ConvertToRomanOld$(MyNum, RomanChars(), Milestones())
   ELSEIF Choice% = 2 THEN
     RomanNumeral$ = "Coming Soon!"
   ELSE
@@ -25,35 +30,18 @@ DO
   PRINT RomanNumeral$
 LOOP WHILE MyNum > 0
 
-FUNCTION ConvertToRomanOld$ (MyNum AS INTEGER)
+FUNCTION ConvertToRomanOld$ (MyNum AS INTEGER, RomanChars() AS STRING, Milestones() AS INTEGER)
+ 
   Num1% = MyNum
   LET TempStr$ = ""
 
   WHILE Num1% > 0
-  
-   IF Num1% >= 1000 THEN
-     CALL RomanCalculations(Num1%, Temp%, "M", 1000, TempStr$)
-   END IF
 
-   IF Num1% >= 500 THEN
-     CALL RomanCalculations(Num1%, Temp%, "D", 500, TempStr$)
-   END IF
-
-   IF Num1% >= 100 THEN
-     CALL RomanCalculations(Num1%, Temp%, "C", 100, TempStr$)
-   END IF
-  
-   IF Num1% >= 50 THEN
-     CALL RomanCalculations(Num1%, Temp%, "L", 50, TempStr$)
-   END IF
-  
-   IF Num1% >= 10 THEN
-     CALL RomanCalculations(Num1%, Temp%, "X", 10, TempStr$)
-   END IF
-  
-   IF Num1% >= 5 THEN
-     CALL RomanCalculations(Num1%, Temp%, "V", 5, TempStr$)
-   END IF
+   FOR i = 0 TO 5
+     IF Num1% >= Milestones(i) THEN
+       CALL RomanCalculationsOld(Num1%, Temp%, RomanChars(i), Milestones(i), TempStr$)
+     END IF
+   NEXT i
    
    IF Num1% < 5 THEN
      Temp% = Num1%
@@ -63,7 +51,7 @@ FUNCTION ConvertToRomanOld$ (MyNum AS INTEGER)
      NEXT x
    END IF
 
-WEND
+  WEND
 
   ConvertToRomanOld$ = TempStr$
             
@@ -73,12 +61,30 @@ FUNCTION GetMyNumber%
   INPUT "Please Enter a Year: ", GetMyNumber%
 END FUNCTION
 
-SUB RomanCalculations (Num1%, Temp%, RomanChar$, MilestoneNum, TempStr$)
-  Temp% = Num1% \ MilestoneNum
-  Num1% = Num1% - (MilestoneNum * Temp%)
+SUB RomanCalculationsOld (Num1%, Temp%, RomanChar$, Milestone AS INTEGER, TempStr$)
+  Temp% = Num1% \ Milestone
+  Num1% = Num1% - (Milestone * Temp%)
 
   FOR x = 1 TO Temp%
     TempStr$ = TempStr$ + RomanChar$
   NEXT x
+END SUB
+
+SUB SetArrays (RomanChars() AS STRING, Milestones() AS INTEGER)
+  RomanChars(0) = "M"
+  RomanChars(1) = "D"
+  RomanChars(2) = "C"
+  RomanChars(3) = "L"
+  RomanChars(4) = "X"
+  RomanChars(5) = "V"
+  RomanChars(6) = "I"
+
+  Milestones(0) = 1000
+  Milestones(1) = 500
+  Milestones(2) = 100
+  Milestones(3) = 50
+  Milestones(4) = 10
+  Milestones(5) = 5
+  Milestones(6) = 1
 END SUB
 
