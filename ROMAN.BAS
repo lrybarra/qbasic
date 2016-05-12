@@ -24,7 +24,7 @@ DO
   ELSEIF Choice% = 2 THEN
     RomanNumeral$ = "Coming Soon!"
   ELSE
-    RomanNumeral$ = "Fuck Yourself!"
+    RomanNumeral$ = "Bad Dog!"
   END IF
 
   PRINT RomanNumeral$
