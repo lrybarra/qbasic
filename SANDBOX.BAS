@@ -1,3 +1,5 @@
+DECLARE FUNCTION TestVARS! (test AS INTEGER)
+
 LET Stra$ = " "
 
 CLS
@@ -9,5 +11,14 @@ FOR x = 0 TO 5
   PRINT Stra$
 NEXT x
 
+a = TestVARS!(3)
+PRINT a
 
+
+FUNCTION TestVARS (test AS INTEGER)
+  test = test + 5
+  PRINT test
+  TestVARS = 5
+
+END FUNCTION
 
