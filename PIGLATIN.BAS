@@ -8,9 +8,11 @@ INPUT "Enter a word: ", word$
 
 PRINT MID$(word$, 1, 1)
 
-IF IsVowel(LCASE$(MID$(word$, 1, 1))) = 1 THEN
-  PRINT "Vowel!"
-END IF
+FOR i = 1 TO LEN(word$)
+  IF IsVowel(LCASE$(MID$(word$, i, 1))) = 1 THEN
+    PRINT "Vowel!"
+  END IF
+NEXT i
 
 
 
