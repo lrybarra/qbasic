@@ -5,11 +5,14 @@ DECLARE FUNCTION IsVowel! (char AS STRING)
 CLS
 COLOR 11
 
-INPUT "Enter a word: ", word$
+10 INPUT "Enter a word (0 to quit): ", word$
 
-PigLatinWord$ = ConvertWordToPigLatin$(word$)
-
-PRINT PigLatinWord$
+IF word$ = "0" THEN
+ELSE
+  PigLatinWord$ = ConvertWordToPigLatin$(word$)
+  PRINT PigLatinWord$
+  GOTO 10
+END IF
 
 FUNCTION ConvertWordToPigLatin$ (word AS STRING)
 
