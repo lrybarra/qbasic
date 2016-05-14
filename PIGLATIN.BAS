@@ -5,13 +5,31 @@ DECLARE FUNCTION IsVowel! (char AS STRING)
 CLS
 COLOR 11
 
-10 INPUT "Enter a word (0 to quit): ", word$
+10 INPUT "Enter a sentence (0 to quit): ", sentence$
 
-IF word$ = "0" THEN
+IF sentence$ = "0" THEN
 ELSE
-  PigLatinWord$ = ConvertWordToPigLatin$(word$)
-  PRINT PigLatinWord$
-  GOTO 10
+  sentenceIndex% = 1
+  PigLatinSentence$ = ""
+
+  WHILE sentenceIndex% < LEN(sentence$)
+    word$ = ""
+    j = 1
+
+    letter$ = MID$(sentence$, sentenceIndex%, 1)
+
+    WHILE letter$ <> "" OR letter$ <> " "
+      word$ = word$ + letter$
+      sentenceIndex% = sentenceIndex% + 1
+      letter$ = MID$(sentence$, sentenceIndex%, 1)
+      PRINT "word is " + word$
+    WEND
+    PRINT "HI"
+    PigLatinSentence$ = PigLatinSentence$ + ConvertWordToPigLatin$(word$)
+    sentenceIndex% = sentenceIndex% + 1
+  WEND
+
+  PRINT PigLatinSentence$
 END IF
 
 FUNCTION ConvertWordToPigLatin$ (word AS STRING)
