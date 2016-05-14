@@ -11,27 +11,32 @@ PigLatinWord$ = ConvertWordToPigLatin$(word$)
 
 PRINT PigLatinWord$
 
-
-
-
 FUNCTION ConvertWordToPigLatin$ (word AS STRING)
 
-  temp$ = word
-
-  FOR i = 1 TO LEN(temp$)
-    IF IsVowel(LCASE$(MID$(temp$, i, 1))) = 1 THEN
-      IF i = 1 THEN
-        ConvertWordToPigLatin$ = temp$
-        EXIT FUNCTION
-      END IF
-    END IF
-  NEXT i
-
-  ConvertWordToPigLatin = "A"
+  strt$ = MID$(word, 1, 1)
  
+  IF IsVowel(strt$) = 1 THEN
+    ConvertWordToPigLatin$ = word
+    EXIT FUNCTION
+  END IF
+
+  i = 2
+
+  WHILE IsVowel(MID$(word, i, 1)) = 0
+    strt$ = strt$ + MID$(word, i, 1)
+    i = i + 1
+  WEND
+
+  strt$ = strt$ + "ay"
+
+  ConvertWordToPigLatin$ = UCASE$(MID$(word, i, 1)) + MID$(word, i + 1, LEN(word)) + strt$
+
 END FUNCTION
 
 FUNCTION IsVowel (char AS STRING)
+   
+  char = LCASE$(char)
+
   SELECT CASE char
     CASE "a", "e", "i", "o", "u"
       IsVowel = 1
