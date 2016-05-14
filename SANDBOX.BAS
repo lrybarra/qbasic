@@ -1,5 +1,7 @@
 DECLARE FUNCTION TestVARS! (test AS INTEGER)
 
+PLAY "CDEFGAB"
+
 LET Stra$ = " "
 
 CLS
@@ -13,7 +15,6 @@ NEXT x
 
 a = TestVARS!(3)
 PRINT a
-
 
 FUNCTION TestVARS (test AS INTEGER)
   test = test + 5
