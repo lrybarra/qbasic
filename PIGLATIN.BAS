@@ -1,6 +1,11 @@
+' * * * * * PIGLATIN.BAS COPYRIGHT 2016 LUIS YBARRA * * * * *
+' *                                                         *
+' * Program that takes a sentence and converts to Pig Latin *
+' *                                                         *
+' * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 DECLARE FUNCTION ConvertWordToPigLatin$ (word AS STRING)
 DECLARE FUNCTION IsVowel! (char AS STRING)
-'***** COPYRIGHT 2016 LUIS YBARRA *****
 
 CLS
 COLOR 11
@@ -13,23 +18,25 @@ ELSE
   PigLatinSentence$ = ""
 
   WHILE sentenceIndex% < LEN(sentence$)
+   
     word$ = ""
-    j = 1
 
     letter$ = MID$(sentence$, sentenceIndex%, 1)
 
-    WHILE letter$ <> "" OR letter$ <> " "
+    WHILE letter$ <> "" AND letter$ <> " "
       word$ = word$ + letter$
       sentenceIndex% = sentenceIndex% + 1
       letter$ = MID$(sentence$, sentenceIndex%, 1)
-      PRINT "word is " + word$
     WEND
-    PRINT "HI"
-    PigLatinSentence$ = PigLatinSentence$ + ConvertWordToPigLatin$(word$)
+   
+    PigLatinSentence$ = PigLatinSentence$ + " " + ConvertWordToPigLatin$(word$)
     sentenceIndex% = sentenceIndex% + 1
+ 
   WEND
 
-  PRINT PigLatinSentence$
+  PRINT PigLatinSentence$ + CHR$(10)
+  GOTO 10
+
 END IF
 
 FUNCTION ConvertWordToPigLatin$ (word AS STRING)
@@ -37,7 +44,7 @@ FUNCTION ConvertWordToPigLatin$ (word AS STRING)
   strt$ = MID$(word, 1, 1)
  
   IF IsVowel(strt$) = 1 THEN
-    ConvertWordToPigLatin$ = word
+    ConvertWordToPigLatin$ = UCASE$(strt$) + MID$(word, 2, LEN(word))
     EXIT FUNCTION
   END IF
 
