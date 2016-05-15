@@ -1,3 +1,10 @@
+' * * * * * FACT.BAS COPYRIGHT 2016 LUIS YBARRA * * * * * * *
+' *                                                         *
+' * Program that takes a number & calculates its factorial  *
+' *                                                         *
+' * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
 DECLARE FUNCTION Factorial! (num AS INTEGER)
 
 CLS
