@@ -1,6 +1,12 @@
+' * * * * * ROMAN.BAS COPYRIGHT 2016 LUIS YBARRA * * * * *  *
+' *                                                         *
+' * Program that converts Arabic Years to Old Roman Years   *
+' *                                                         *
+' * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
 DECLARE SUB SetArrays (RomanChars() AS STRING, Milestones() AS INTEGER)
 DECLARE SUB RomanCalculationsOld (Num1%, Temp%, RomanChar$, MilestoneNum AS INTEGER, TempStr$)
-'***** COPYRIGHT 2016 LUIS YBARRA *****
 
 DIM MyNum AS INTEGER
 DIM RomanChars(7) AS STRING

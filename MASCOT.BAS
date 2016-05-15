@@ -1,6 +1,12 @@
+' * * * * * MASCOT.BAS COPYRIGHT 2016 LUIS YBARRA * * * * * *
+' *                                                         *
+' * Program that takes a cheer and outputs a response       *
+' *                                                         *
+' * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
 DECLARE SUB Display (cheer AS STRING)
 DECLARE FUNCTION MascotSignFor$ (cheer AS STRING)
-'##### COPYRIGHT 2016 LUIS YBARRA ######
 
 DIM response AS STRING
 
@@ -15,7 +21,6 @@ ELSE
   Display (response)
   GOTO 10
 END IF
-
 
 SUB Display (cheer AS STRING)
   PRINT cheer + CHR$(10)
