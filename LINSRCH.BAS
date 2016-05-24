@@ -1,13 +1,11 @@
 DECLARE FUNCTION LinearSearch (Element AS INTEGER, Arr() AS INTEGER)
 
 DIM IntArray(100) AS INTEGER
-DIM SearchResult AS INTEGER
+DIM SearchResult(100) AS INTEGER
 
 CLS
 RANDOMIZE TIMER
 COLOR 2
-
-PRINT "YO"
 
 FOR x = 0 TO 99
   IntArray(x) = INT(RND * 100)
@@ -17,11 +15,11 @@ FOR x = 0 TO 10
   PRINT IntArray(x)
 NEXT x
 
-  INPUT "Enter a number: ", num%
+INPUT "Enter a number: ", num%
 
-  SearchResult = LinearSearch(num%, IntArray())
+SearchResult = LinearSearch(num%, IntArray())
 
-  PRINT SearchResult
+PRINT SearchResult
 
 
 FUNCTION LinearSearch (Element AS INTEGER, Arr() AS INTEGER)
