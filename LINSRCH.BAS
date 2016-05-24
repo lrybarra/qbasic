@@ -1,3 +1,9 @@
+' * * * * * LINSRCH.BAS COPYRIGHT 2016 LUIS YBARRA * * * *  *
+' *                                                         *
+' * Program that searches & finds index of element          *
+' *                                                         *
+' * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 DECLARE FUNCTION LinearSearch (Element AS INTEGER, Arr() AS INTEGER)
 
 DIM IntArray(100) AS INTEGER
